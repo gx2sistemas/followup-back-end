@@ -46,12 +46,6 @@ public class ClienteResource {
 		return ResponseEntity.noContent().build();
 	}
 
-//	{
-//	"razaoSocial":"TomCAT",
-//	"logo":"C:/Desktop/minhaFoto.png",
-//	"gestao":"Marcos Das Minas"
-//	}
-	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Cliente obj) {
 		Cliente cliente = service.save(obj);
