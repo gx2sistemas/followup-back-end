@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.gx2.DTO.CursoDTO;
 import br.com.gx2.entities.Curso;
 import br.com.gx2.entities.User;
 import br.com.gx2.repositories.CursoRepository;
@@ -15,28 +16,37 @@ public class CursoService {
 
 	@Autowired
 	CursoRepository repository;
-	
-	public List<Curso> findAll(){
-		
+
+	public List<Curso> findAll() {
+
 		return repository.findAll();
 	}
-	
-	
+
 	public Curso findbyId(Long id) {
-		
+
 		Curso obj = repository.findById(id).orElse(null);
 		if (obj == null) {
 			throw new ObjectNotFoundException("Curso não localizado!");
 		}
-		
+
 		return obj;
 
 	}
-	
-	
+
 	public Curso salvarCurso(Curso curso) {
 		return repository.save(curso);
 	}
-	
-	
+
+	public Curso atualizar(Curso curso) {
+		
+		return repository.save(curso);
+	}
+
+	public void deleteById(Long id) {
+		if (id == null) {
+			throw new ObjectNotFoundException("Curso não localizado!");
+		}
+		repository.deleteById(id);
+	}
+
 }
